@@ -11,7 +11,7 @@ import com.taxfiling.repository.TaxFormRepository;
 
 @Service
 public class AddTaxDetailsServiceImpl implements AddTaxDetailsService {
-	
+
 	@Autowired
 	TaxFormRepository taxformRepo;
 
@@ -20,6 +20,7 @@ public class AddTaxDetailsServiceImpl implements AddTaxDetailsService {
 
 	@Override
 	public int addTaxDetailsForEmployeeService(TaxForm objTaxForm) {
+		objTaxForm.setVerifiedStatus("none");
 		taxformRepo.save(objTaxForm);
 		return 1;
 	}
@@ -27,6 +28,7 @@ public class AddTaxDetailsServiceImpl implements AddTaxDetailsService {
 	@Override
 	@Transactional
 	public int addTaxDetailsByNewCustomerService(TaxForm objTaxForm) {
+		objTaxForm.setVerifiedStatus("pending");
 		taxformRepo.save(objTaxForm);
 		Customer c = customerRepo.getCustByPan(objTaxForm.getPan());
 		c.setTaxForm(objTaxForm);
@@ -46,7 +48,7 @@ public class AddTaxDetailsServiceImpl implements AddTaxDetailsService {
 		t.setEducationLoan(objTaxForm.getEducationLoan());
 		t.setNps(objTaxForm.getNps());
 		t.setSavingsInterest(objTaxForm.getSavingsInterest());
-		t.setVerifiedStatus("Pending");
+		t.setVerifiedStatus("pending");
 		t.setPayableTax(objTaxForm.getPayableTax());
 		taxformRepo.save(t);
 		Customer c1 = customerRepo.getCustByPan(t.getPan());
