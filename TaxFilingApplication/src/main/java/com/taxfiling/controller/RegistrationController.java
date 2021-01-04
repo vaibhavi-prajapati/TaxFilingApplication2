@@ -62,7 +62,7 @@ public class RegistrationController {
 		if (i > 0) {
 			str = "Registration successful";
 		}
-		logger.info("Registration of employer is done successfully");
+		logger.info("Registration of representative is done successfully");
 		return str;
 	}
 }
