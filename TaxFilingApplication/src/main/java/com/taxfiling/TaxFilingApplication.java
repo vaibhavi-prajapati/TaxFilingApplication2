@@ -1,8 +1,12 @@
 package com.taxfiling;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.taxfiling.controller.RegistrationController;
 
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -13,6 +17,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class TaxFilingApplication {
 
+	Logger logger = LoggerFactory.getLogger(TaxFilingApplication.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(TaxFilingApplication.class, args);
 	}

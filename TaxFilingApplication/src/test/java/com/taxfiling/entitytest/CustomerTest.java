@@ -15,7 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.taxfiling.entity.*;
+import com.taxfiling.entity.Admin;
+import com.taxfiling.entity.Customer;
+import com.taxfiling.entity.Employer;
+import com.taxfiling.entity.Notice;
+import com.taxfiling.entity.Representative;
+import com.taxfiling.entity.TaxForm;
 import com.taxfiling.repository.AdminRepository;
 
 @RunWith(SpringRunner.class)

@@ -72,6 +72,6 @@ class LoginControllerTest {
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 		String jsonOutput = mockHttpServletResponse.getContentAsString();
 
-		Assert.assertEquals("Login Successful", jsonOutput);
+		Assert.assertEquals("Login successfull", jsonOutput);
 	}
 }

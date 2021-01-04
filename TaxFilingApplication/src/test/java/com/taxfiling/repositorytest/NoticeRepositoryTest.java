@@ -1,13 +1,9 @@
 package com.taxfiling.repositorytest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-
-import static org.junit.Assert.*;
-
 import java.util.List;
 
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,29 +15,26 @@ import com.taxfiling.repository.NoticeRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TaxFilingApplication.class)
-public class NoticeRepositoryTest {
-	
+class NoticeRepositoryTest {
+
 	@Autowired
 	private NoticeRepository nr;
 
 	@Test
-	public void viewadminnotice() {
-		List<Notice> n1 = nr.viewadminnotice("sk@cg.com");
-		assert n1.get(0).getNoticeBody().equals("Approved") : "Test Failed";
-		
-	}
-	
-	@Test
-	public void viewCustomerNotice() {
-		List<Notice> n2 = nr.viewCustomerNotice((long) 3);
-		assert n2.get(0).getNoticeBody().equals("Approved") : "Test Failed";
-		
-	}
-	
-	@Test
-	public void viewRepresentativeNotice() {
-		List<Notice> n3 = nr.viewRepresentativeNotice((long) 1);
-		assert n3.get(0).getNoticeBody().equals("Rejected") : "Test Failed";
+	void viewadminnotice() {
+		List<Notice> n1 = nr.viewadminnotice("admin");
+		Assert.assertEquals(2, n1.get(0).getNoticeId());
 	}
 
+	@Test
+	void viewCustomerNotice() {
+		List<Notice> n2 = nr.viewCustomerNotice((long) 1);
+		Assert.assertEquals(1, n2.get(0).getNoticeId());
+	}
+
+	@Test
+	void viewRepresentativeNotice() {
+		List<Notice> n3 = nr.viewRepresentativeNotice((long) 1);
+		Assert.assertEquals(1, n3.get(0).getNoticeId());
+	}
 }

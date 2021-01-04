@@ -1,5 +1,6 @@
 package com.taxfiling.repositorytest;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,7 @@ public class RepresentativeRepositoryTest {
 
 	@Test
 	public void loginRepresentative() {
-		Representative r = rr.loginRepresentative(1, "password");
-		assert r.getName().equals("rep100") : "Test Failed";
+		Representative r = rr.loginRepresentative(1, "Rep@1111");
+		Assert.assertEquals("rep", r.getName());
 	}
-
 }

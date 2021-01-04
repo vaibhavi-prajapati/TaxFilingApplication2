@@ -3,6 +3,8 @@ package com.taxfiling.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,10 +22,12 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 public class EditProfileController {
 
+	Logger logger = LoggerFactory.getLogger(EditProfileController.class);
+	
 	@Autowired
 	private EditProfileService es;
 
-	@PutMapping("/editCustomer/{id},{editChoice},{newValue}")
+	@PutMapping("/editCustomer/{id}/{editChoice}/{newValue}")
 	@ApiOperation("Choices: 1.Name  2.Email  3.Password  4.Pan Number  5.Contact Number  6.Bank Account Number  7.Marital Status  8.Address")
 	public String upadteCustomer(@PathVariable("id") Long id, @PathVariable("editChoice") Integer choice,
 			@PathVariable("newValue") String newValue) {
@@ -89,7 +93,7 @@ public class EditProfileController {
 			return "An error occured!";
 	}
 
-	@PutMapping("/editEmployer/{id},{editChoice},{newValue}")
+	@PutMapping("/editEmployer/{id}/{editChoice}/{newValue}")
 	@ApiOperation("Choices: 1.Email  2.Password  3.Contact Number")
 	public String upadteEmployer(@PathVariable("id") Long id, @PathVariable("editChoice") Integer choice,
 			@PathVariable("newValue") String newValue) {
@@ -126,7 +130,7 @@ public class EditProfileController {
 			return "An error occured!";
 	}
 
-	@PutMapping("/editRepresentative/{id},{editChoice},{newValue}")
+	@PutMapping("/editRepresentative/{id}/{editChoice}/{newValue}")
 	@ApiOperation("Choices: 1.Name  2.Email  3.Password  4.Contact Number")
 	public String upadteRepresentative(@PathVariable("id") Long id, @PathVariable("editChoice") Integer choice,
 			@PathVariable("newValue") String newValue) {
@@ -169,7 +173,7 @@ public class EditProfileController {
 			return "An error occured!";
 	}
 
-	@PutMapping("/editAdmin/{id},{editChoice},{newValue}")
+	@PutMapping("/editAdmin/{id}/{editChoice}/{newValue}")
 	@ApiOperation("Choices: 1.password")
 	public String upadteAdmin(@PathVariable("id") String id, @PathVariable("editChoice") Integer choice,
 			@PathVariable("newValue") String newValue) {
@@ -191,7 +195,7 @@ public class EditProfileController {
 			return "An error occured!";
 	}
 
-	@PutMapping("/forgotPassword/{id},{userChoice},{questionChoice},{answer},{newPassword}")
+	@PutMapping("/forgotPassword/{id}/{userChoice}/{questionChoice}/{answer}/{newPassword}")
 	@ApiOperation("User Choices: 1.Customer 2.Employer 3.Representative   " + "****QuestionChoice****= "
 			+ "1.what is your nickname?, 2.what is place of birth?, 3.What is your fathers name?")
 	public String forgotPassword(@PathVariable("id") String id, @PathVariable("userChoice") int choice,

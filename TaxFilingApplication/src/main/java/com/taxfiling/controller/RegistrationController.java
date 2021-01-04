@@ -1,5 +1,7 @@
 package com.taxfiling.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,11 +21,10 @@ public class RegistrationController {
 	@Autowired
 	private RegistrationService regService;
 
+	Logger logger = LoggerFactory.getLogger(RegistrationController.class);
+
 	@PostMapping("/registerCustomer/{organizationName}")
-	// @RequestMapping(value = "/registerCustomer2/{organizationName}",method =
-	// RequestMethod.POST, consumes = "application/json",produces =
-	// "application/json")
-	@ApiOperation("****if you are not employee put organization name as null****")
+	@ApiOperation("If you are not employee put organization name as null")
 	public String registercustomer(@RequestBody Customer c, @PathVariable("organizationName") String orgName) {
 		String str = "Registration unsuccessful";
 		int i = 0;
@@ -37,6 +38,7 @@ public class RegistrationController {
 		if (i > 0) {
 			str = "Registration successful";
 		}
+		logger.info("Registration of customer is done successfully");
 		return str;
 	}
 
@@ -48,6 +50,7 @@ public class RegistrationController {
 		if (i > 0) {
 			str = "Registration successful";
 		}
+		logger.info("Registration of employer is done successfully");
 		return str;
 	}
 
@@ -59,6 +62,7 @@ public class RegistrationController {
 		if (i > 0) {
 			str = "Registration successful";
 		}
+		logger.info("Registration of employer is done successfully");
 		return str;
 	}
 }

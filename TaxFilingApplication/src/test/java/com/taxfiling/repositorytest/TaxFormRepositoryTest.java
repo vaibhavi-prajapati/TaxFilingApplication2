@@ -1,5 +1,6 @@
 package com.taxfiling.repositorytest;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,8 @@ public class TaxFormRepositoryTest {
 
 	@Test
 	public void getTaxFormByPan() {
-		TaxForm t1 = tr.getTaxFormByPan("asdf");
-		double tt = t1.getTotalIncomeSalary();
-		assert tt == 1500000 : "Test Failed";
-
+		TaxForm t1 = tr.getTaxFormByPan("VVVVV1234V");
+		Long id = t1.getTaxformId();
+		Assert.assertEquals("1", id.toString());
 	}
 }

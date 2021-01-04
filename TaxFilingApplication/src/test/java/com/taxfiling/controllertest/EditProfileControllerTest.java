@@ -64,7 +64,7 @@ class EditProfileControllerTest {
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 		String jsonOutput = mockHttpServletResponse.getContentAsString();
 
-		Assert.assertEquals("Your field Name with updated value is sanket", jsonOutput);
+		Assert.assertEquals("Your Name is now: sanket", jsonOutput);
 
 	}
 
@@ -88,13 +88,13 @@ class EditProfileControllerTest {
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 		String jsonOutput = mockHttpServletResponse.getContentAsString();
 
-		Assert.assertEquals("Your field Password with updated value is pass", jsonOutput);
+		Assert.assertEquals("Your Password is now: pass", jsonOutput);
 
 	}
 
 	@Test
 	void testUpadteRepresentative() throws Exception {
-		String URI = "/editRepresentative/{id},{editChoice},{newValue}";
+		String URI = "/editRepresentative/{id}/{editChoice}/{newValue}";
 
 		Representative rep = new Representative();
 
@@ -113,13 +113,13 @@ class EditProfileControllerTest {
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 		String jsonOutput = mockHttpServletResponse.getContentAsString();
 
-		Assert.assertEquals("Your field Password with updated value is pass", jsonOutput);
+		Assert.assertEquals("Your Password is now: pass", jsonOutput);
 
 	}
 
 	@Test
 	void testUpadteAdmin() throws Exception {
-		String URI = "/editAdmin/{id},{editChoice},{newValue}";
+		String URI = "/editAdmin/{id}/{editChoice}/{newValue}";
 
 		Admin a = new Admin();
 		a.setEmail("admin@gmail.com");
@@ -133,7 +133,7 @@ class EditProfileControllerTest {
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 		String jsonOutput = mockHttpServletResponse.getContentAsString();
 
-		Assert.assertEquals("Your field Password with updated value is pass", jsonOutput);
+		Assert.assertEquals("Your Password is now: pass", jsonOutput);
 
 	}
 
@@ -162,7 +162,7 @@ class EditProfileControllerTest {
 
 	@Test
 	void testForgotPassword() throws Exception {
-		String URI = "/forgotPassword/{id},{userChoice},{questionChoice},{answer},{newPassword}";
+		String URI = "/forgotPassword/{id}/{userChoice}/{questionChoice}/{answer}/{newPassword}";
 
 		Representative rep = new Representative();
 

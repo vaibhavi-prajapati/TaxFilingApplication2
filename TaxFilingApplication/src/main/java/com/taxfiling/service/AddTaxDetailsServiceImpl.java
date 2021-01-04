@@ -56,4 +56,8 @@ public class AddTaxDetailsServiceImpl implements AddTaxDetailsService {
 		customerRepo.save(c1);
 		return 1;
 	}
+	@Override
+	public Customer getCustomerByPan(String pan) {
+		return customerRepo.getCustByPan(pan);
+	}
 }

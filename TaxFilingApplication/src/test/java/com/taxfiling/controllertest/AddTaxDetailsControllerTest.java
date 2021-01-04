@@ -1,5 +1,6 @@
 package com.taxfiling.controllertest;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -61,7 +62,7 @@ class AddTaxDetailsControllerTest {
 		tf.setSavingsInterest(300);
 		tf.setTds(350);
 		tf.setPayableTax(50);
-		tf.setExtraInfo("nothing");
+		tf.setExtraInfo("09-09-1997");
 		tf.setVerifiedStatus("pending");
 
 		String jsonInput = this.convertToJson(tf);
@@ -77,7 +78,7 @@ class AddTaxDetailsControllerTest {
 
 	@Test
 	void testAddTaxDetailsByNewCustomer() throws Exception {
-		String URI = "/taxDetailsByNew";
+		String URI = "/taxDetailsByCustomer";
 		TaxForm tf = new TaxForm();
 		tf.setPan("asdf");
 		tf.setTotalIncomeSalary(10000);
@@ -93,7 +94,7 @@ class AddTaxDetailsControllerTest {
 		tf.setSavingsInterest(300);
 		tf.setTds(350);
 		tf.setPayableTax(50);
-		tf.setExtraInfo("nothing");
+		tf.setExtraInfo("09-09-1997");
 		tf.setVerifiedStatus("pending");
 		tf.setPan("abc12345");
 
@@ -107,7 +108,7 @@ class AddTaxDetailsControllerTest {
 		cust.setPan("abc12345");
 		cust.setContactNo("987654");
 		cust.setAccountNo("asdf123");
-		// cust.setDateOfBirth(1998-07-08);
+		cust.setDateOfBirth(LocalDate.of(1997, 9, 9));
 		cust.setMaritalStatus("single");
 		cust.setAddress("Mumbai");
 		cust.setIsEmployee(false);
@@ -122,7 +123,7 @@ class AddTaxDetailsControllerTest {
 				.content(jsonInput).contentType(MediaType.APPLICATION_JSON)).andReturn();
 		MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 		String jsonOutput = mockHttpServletResponse.getContentAsString();
-		Assert.assertEquals("Taxform details added successfully(New Customer)", jsonOutput);
+		Assert.assertEquals("Taxform details added successfully", jsonOutput);
 	}
 
 	@Test
@@ -157,7 +158,7 @@ class AddTaxDetailsControllerTest {
 		cust.setPan("abc12345");
 		cust.setContactNo("987654");
 		cust.setAccountNo("asdf123");
-		// cust.setDateOfBirth(1998-07-08);
+		cust.setDateOfBirth(LocalDate.of(1997, 9, 9));
 		cust.setMaritalStatus("single");
 		cust.setAddress("Mumbai");
 		cust.setIsEmployee(false);

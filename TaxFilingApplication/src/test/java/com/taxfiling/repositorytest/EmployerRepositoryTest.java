@@ -20,16 +20,14 @@ public class EmployerRepositoryTest {
 	private EmployerRepository er;
 
 	@Test
-	void loginEmployer() {
-		Employer e1 = er.loginEmployer(1, "qwe");
-		assertEquals("CG", e1.getOrganization());
-
+	public void loginEmployer() {
+		Employer e1 = er.loginEmployer(1, "Emp@1111");
+		assertEquals("capg", e1.getOrganization());
 	}
 
 	@Test
-	void findEmployer() {
-		Employer e2 = er.findEmployer("CG");
-		assertEquals("abc@gmail.com", e2.getEmail());
+	public void findEmployer() {
+		Employer e2 = er.findEmployer("capg");
+		assertEquals("emp@gmail.com", e2.getEmail());
 	}
-
 }

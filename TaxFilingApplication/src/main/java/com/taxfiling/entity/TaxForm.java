@@ -1,5 +1,6 @@
 package com.taxfiling.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class TaxForm {
 	private long taxformId;
 
 	@NotNull
+	@Column(unique = true)
 	@NotBlank(message = "PAN can not be empty")
 	@Pattern(regexp = "(^$|[A-Z]{5}[0-9]{4}[A-Z]{1})", message = "Enter valid PAN")
 	private String pan;

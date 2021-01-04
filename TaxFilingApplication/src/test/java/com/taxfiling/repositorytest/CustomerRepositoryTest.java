@@ -1,5 +1,6 @@
 package com.taxfiling.repositorytest;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,13 @@ public class CustomerRepositoryTest {
 
 	@Test
 	public void getCustByPanTest() {
-		Customer c = cr.getCustByPan("asdf");
-		assert c.getName().equals("ssk") : "Test Failed";
-
+		Customer c = cr.getCustByPan("VVVVV1234V");
+		Assert.assertEquals("Vaibhavi", c.getName());
 	}
 
 	@Test
 	public void loginCustomerTest() {
-		Customer c = cr.loginCustomer((long) 5, "dkdj");
-		assert c.getName().equals("ssk");
+		Customer c = cr.loginCustomer((long) 1, "Cus@1111");
+		Assert.assertEquals("Vaibhavi", c.getName());
 	}
-
 }

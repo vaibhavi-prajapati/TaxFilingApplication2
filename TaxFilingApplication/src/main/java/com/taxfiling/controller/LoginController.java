@@ -1,5 +1,7 @@
 package com.taxfiling.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,11 +13,14 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 public class LoginController {
+
+	Logger logger = LoggerFactory.getLogger(LoginController.class);
+
 	@Autowired
 	private LoginService ls;
 
-	@GetMapping("/login/{id},{password},{choice}")
-	@ApiOperation("choices: 1.Customer 2.Employer 3.Representative")
+	@GetMapping("/login/{id}/{password}/{choice}")
+	@ApiOperation("Choices: 1.Customer 2.Employer 3.Representative")
 	public String login(@PathVariable("id") String id, @PathVariable("password") String password,
 			@PathVariable("choice") Integer choice) {
 		Object obj = null;

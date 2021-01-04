@@ -160,6 +160,7 @@ class EditProfileServiceTest {
 	void testRemoveCustomer() {
 		Customer c = new Customer();
 		c.setCustomerId(3);
+		Mockito.when(customerRepository.existsById(3l)).thenReturn(true);
 		int i = editprofile.removeCustomer(3L);
 
 		Assert.assertEquals(i, 1);
@@ -170,6 +171,7 @@ class EditProfileServiceTest {
 	void testRemoveEmployer() {
 		Employer e = new Employer();
 		e.setEmployerId(1);
+		Mockito.when(employerRepository.existsById(1l)).thenReturn(true);
 		int i = editprofile.removeEmployer(1L);
 		Assert.assertEquals(i, 1);
 
@@ -179,6 +181,7 @@ class EditProfileServiceTest {
 	void testRemoveRepresentative() {
 		Representative r = new Representative();
 		r.setRepresentativeId(1);
+		Mockito.when(representativerepo.existsById(1l)).thenReturn(true);
 		int i = editprofile.removeRepresentative(1L);
 		Assert.assertEquals(i, 1);
 

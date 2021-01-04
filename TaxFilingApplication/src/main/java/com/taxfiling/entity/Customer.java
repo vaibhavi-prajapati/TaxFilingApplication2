@@ -56,6 +56,7 @@ public class Customer {
 	private String securityAnswer;
 
 	@NotNull
+	@Column(unique = true)
 	@NotBlank(message = "PAN can not be empty")
 	@Pattern(regexp = "(^$|[A-Z]{5}[0-9]{4}[A-Z]{1})", message = "Enter valid PAN")
 	private String pan;
