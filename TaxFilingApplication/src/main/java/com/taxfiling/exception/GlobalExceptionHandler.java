@@ -43,14 +43,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 				"Try again with correct details", "Reach out to ithelpdesk@taxportal.com");
 		return new ResponseEntity<>(customError, HttpStatus.EXPECTATION_FAILED);
 	}
-
-	/*
-	 * @ExceptionHandler(Exception.class) public
-	 * ResponseEntity<CustomExceptionSchema> handleException(Exception ex) {
-	 * CustomExceptionSchema customError = new
-	 * CustomExceptionSchema(ex.getClass().getSimpleName(), ex.getMessage(),
-	 * ex.getCause().toString(), "Try again with correct details",
-	 * "Reach out to ithelpdesk@taxportal.com"); return new
-	 * ResponseEntity<>(customError, HttpStatus.BAD_REQUEST); }
-	 */
 }
