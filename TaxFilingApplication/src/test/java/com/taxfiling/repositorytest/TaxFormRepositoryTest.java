@@ -1,27 +1,27 @@
 package com.taxfiling.repositorytest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.taxfiling.TaxFilingApplication;
-import com.taxfiling.entity.Admin;
-import com.taxfiling.repository.AdminRepository;
+import com.taxfiling.entity.TaxForm;
+import com.taxfiling.repository.TaxFormRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TaxFilingApplication.class)
-class AdminRepositoryTest {
+public class TaxFormRepositoryTest {
 
 	@Autowired
-	private AdminRepository ar;
+	private TaxFormRepository tr;
 
 	@Test
-	void getloginAdmin() {
-		Admin a3 = ar.loginAdmin("admin", "admin");
-		assertEquals("admin", a3.getEmail());
+	public void getTaxFormByPan() {
+		TaxForm t1 = tr.getTaxFormByPan("asdf");
+		double tt = t1.getTotalIncomeSalary();
+		assert tt == 1500000 : "Test Failed";
+
 	}
 }

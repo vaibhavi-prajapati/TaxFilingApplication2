@@ -1,27 +1,26 @@
 package com.taxfiling.repositorytest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.taxfiling.TaxFilingApplication;
-import com.taxfiling.entity.Admin;
-import com.taxfiling.repository.AdminRepository;
+import com.taxfiling.entity.Representative;
+import com.taxfiling.repository.RepresentativeRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TaxFilingApplication.class)
-class AdminRepositoryTest {
+public class RepresentativeRepositoryTest {
 
 	@Autowired
-	private AdminRepository ar;
+	private RepresentativeRepository rr;
 
 	@Test
-	void getloginAdmin() {
-		Admin a3 = ar.loginAdmin("admin", "admin");
-		assertEquals("admin", a3.getEmail());
+	public void loginRepresentative() {
+		Representative r = rr.loginRepresentative(1, "password");
+		assert r.getName().equals("rep100") : "Test Failed";
 	}
+
 }

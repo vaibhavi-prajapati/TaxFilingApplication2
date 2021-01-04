@@ -35,7 +35,7 @@ public class Employer {
 
 	@NotNull
 	@Column(unique = true)
-	@Email(message = "Email can not be empty")
+	@Email(message = "Enter valid email id")
 	private String email;
 
 	@NotNull
