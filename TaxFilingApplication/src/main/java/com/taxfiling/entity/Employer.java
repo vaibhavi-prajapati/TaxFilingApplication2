@@ -33,7 +33,7 @@ public class Employer {
 	@Size(min = 2, max = 30)
 	private String organization;
 
-	@NotNull
+	@NotNull(message = "Email can not be empty")
 	@Column(unique = true)
 	@Email(message = "Enter valid email id")
 	private String email;
@@ -42,7 +42,12 @@ public class Employer {
 	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", message = "Password must contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character")
 	private String password;
 
+	@NotNull
+	@NotBlank(message = "Security question can not be empty")
 	private String securityQuestion;
+
+	@NotNull
+	@NotBlank(message = "Security answer can not be empty")
 	private String securityAnswer;
 
 	@NotNull
