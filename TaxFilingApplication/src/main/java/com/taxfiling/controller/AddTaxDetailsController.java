@@ -23,7 +23,7 @@ public class AddTaxDetailsController {
 	@Autowired
 	private AddTaxDetailsService addTaxDetailsService;
 
-	@PutMapping("/taxDetailsForEmployee")
+	@PutMapping("/addTaxDetailsForEmployee")
 	public String addTaxDetailsForEmployee(@RequestBody TaxForm objTaxForm) {
 		String str = "Taxform details not added";
 		LocalDate today = LocalDate.now(); // Today's date
@@ -41,7 +41,7 @@ public class AddTaxDetailsController {
 		return str;
 	}
 
-	@PutMapping("/taxDetailsByCustomer")
+	@PutMapping("/addTaxDetailsByCustomer")
 	public String addTaxDetailsByCustomer(@RequestBody TaxForm objTaxForm) {
 		String str = "Taxform details not added";
 		Customer c = addTaxDetailsService.getCustomerByPan(objTaxForm.getPan());
