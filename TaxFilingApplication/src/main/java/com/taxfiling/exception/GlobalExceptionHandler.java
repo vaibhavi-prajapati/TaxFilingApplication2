@@ -21,6 +21,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	public final ResponseEntity<CustomExceptionSchema> handleEnitiyNotFoundException(EntityNotFoundException ex) {
 		CustomExceptionSchema customError = new CustomExceptionSchema(ex.getMessage(), ex.getDetails(), ex.getHint(),
 				ex.getNextActions(), ex.getSupport());
+		System.out.println("in exc"+ex.getMessage());
 		return new ResponseEntity<>(customError, HttpStatus.NOT_FOUND);
 	}
 

@@ -29,4 +29,6 @@ public interface FileReturnService {
 	public Admin getAdmin();
 
 	public List<TaxForm> getTaxFormsForAdmin();
+
+	public TaxForm getTaxFormById(Long taxformId);
 }

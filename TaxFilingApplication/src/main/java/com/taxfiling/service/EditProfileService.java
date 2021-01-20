@@ -9,21 +9,21 @@ public interface EditProfileService {
 	
 	Customer findCustomer(long id);
 
-	int updateCustomer(Customer c);
+	Customer updateCustomer(Customer c);
 
 	Employer findEmployerByOrg(String newOrgName);
 
 	Employer findEmployer(Long id);
 
-	int updateEmployer(Employer e);
+	Employer updateEmployer(Employer e);
 
 	Representative findRepresentative(Long id);
 
-	int updateRepresentative(Representative r);
+	Representative updateRepresentative(Representative r);
 
 	Admin findAdmin(String id);
 
-	int updateAdmin(Admin a);
+	Admin updateAdmin(Admin a);
 
 	int removeCustomer(Long id);
 

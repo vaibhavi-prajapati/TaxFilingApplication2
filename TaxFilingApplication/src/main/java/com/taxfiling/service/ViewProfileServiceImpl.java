@@ -1,12 +1,16 @@
 package com.taxfiling.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.taxfiling.entity.Admin;
 import com.taxfiling.entity.Customer;
 import com.taxfiling.entity.Employer;
 import com.taxfiling.entity.Representative;
 import com.taxfiling.exception.EntityNotFoundException;
+import com.taxfiling.repository.AdminRepository;
 import com.taxfiling.repository.CustomerRepository;
 import com.taxfiling.repository.EmployerRepository;
 import com.taxfiling.repository.RepresentativeRepository;
@@ -22,6 +26,9 @@ public class ViewProfileServiceImpl implements ViewProfileService {
 
 	@Autowired
 	private RepresentativeRepository representativeRepo;
+
+	@Autowired
+	private AdminRepository adminRepo;
 
 	@Override
 	public Customer viewCustomerProfile(Long customerId) {
@@ -48,5 +55,30 @@ public class ViewProfileServiceImpl implements ViewProfileService {
 			throw new EntityNotFoundException("Wrong id", "Customer with id: " + representativeId + " doesn't exists",
 					"Recheck id", "Check list of Representaives", "Reach out to ithelpdesk@taxportal.com");
 		return r;
+	}
+
+	@Override
+	public List<Customer> viewAllCustomers() {
+		return customerRepo.findAll();
+	}
+
+	@Override
+	public List<Employer> viewAllEmployers() {
+		return employerRepo.findAll();
+	}
+
+	@Override
+	public List<Representative> viewAllRepresentatives() {
+		return representativeRepo.findAll();
+	}
+
+	@Override
+	public Admin viewAdminProfile() {
+		return adminRepo.findById("admin").orElse(null);
+	}
+
+	@Override
+	public List<Customer> viewAllEmployeesByOrganization(Employer emp) {
+		return customerRepo.viewAllEmployeesByOrganization(emp);
 	}
 }

@@ -60,4 +60,9 @@ public class AddTaxDetailsServiceImpl implements AddTaxDetailsService {
 	public Customer getCustomerByPan(String pan) {
 		return customerRepo.getCustByPan(pan);
 	}
+	
+	@Override
+    public Customer getCustomerById(long customerId) {
+        return customerRepo.getCustById(customerId);
+    }
 }

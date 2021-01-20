@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import com.taxfiling.service.FileReturnService;
 
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class FileReturnController {
 
@@ -68,6 +70,12 @@ public class FileReturnController {
 	@GetMapping("/getTaxFormsForAdmin")
 	public List<TaxForm> getTaxFormsForAdmin() {
 		return fileReturnService.getTaxFormsForAdmin();
+	}
+	
+	@GetMapping("/getTaxFormForCustomer/{customerId}")
+	public TaxForm getTaxFormForCustomer(@PathVariable("customerId") Long customerId) {
+		Customer customer=fileReturnService.getCustomerById(customerId);
+		return fileReturnService.getTaxFromByPan(customer.getPan());
 	}
 
 	@PutMapping("/verifyTaxformByRepresentative/{representativeID}/{taxformId}/{choice}")
@@ -144,5 +152,10 @@ public class FileReturnController {
 			str = "Wrong choice. Try again!";
 		}
 		return str;
+	}
+	
+	@GetMapping("/getTaxForm/{taxformId}")
+	public TaxForm getTaxFormById(@PathVariable("taxformId") Long taxformId) {
+		return fileReturnService.getTaxFormById(taxformId);
 	}
 }

@@ -38,9 +38,8 @@ public class EditProfileServiceImpl implements EditProfileService {
 	}
 
 	@Override
-	public int updateCustomer(Customer c) {
-		customerRepo.save(c);
-		return 1;
+	public Customer updateCustomer(Customer c) {
+		return customerRepo.save(c);
 	}
 
 	@Override
@@ -64,9 +63,8 @@ public class EditProfileServiceImpl implements EditProfileService {
 	}
 
 	@Override
-	public int updateEmployer(Employer e) {
-		employerRepo.save(e);
-		return 1;
+	public Employer updateEmployer(Employer e) {
+		return employerRepo.save(e);
 	}
 
 	@Override
@@ -79,9 +77,8 @@ public class EditProfileServiceImpl implements EditProfileService {
 	}
 
 	@Override
-	public int updateRepresentative(Representative r) {
-		representativeRepo.save(r);
-		return 1;
+	public Representative updateRepresentative(Representative r) {
+		return representativeRepo.save(r);
 	}
 
 	@Override
@@ -90,9 +87,8 @@ public class EditProfileServiceImpl implements EditProfileService {
 	}
 
 	@Override
-	public int updateAdmin(Admin a) {
-		adminRepo.save(a);
-		return 1;
+	public Admin updateAdmin(Admin a) {
+		return adminRepo.save(a);
 	}
 
 	@Override

@@ -12,4 +12,6 @@ public interface AddTaxDetailsService {
 	int addTaxDetailsByEmpCustomerService(TaxForm objTaxForm);
 
 	Customer getCustomerByPan(String pan);
+	
+	Customer getCustomerById(long customerId);
 }

@@ -103,4 +103,9 @@ public class FileReturnServiceImpl implements FileReturnService {
 	public List<TaxForm> getTaxFormsForAdmin() {
 		return taxformRepo.getTaxFormsForAdmin();
 	}
+
+	@Override
+	public TaxForm getTaxFormById(Long taxformId) {
+		return taxformRepo.findById(taxformId).orElse(null);
+	}
 }

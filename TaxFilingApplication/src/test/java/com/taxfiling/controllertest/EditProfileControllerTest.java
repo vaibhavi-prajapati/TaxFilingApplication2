@@ -56,7 +56,7 @@ class EditProfileControllerTest {
 		cust.setAddress("Mumbai");
 		cust.setIsEmployee(false);
 
-		Mockito.when(editService.updateCustomer(cust)).thenReturn(new Integer(1));
+		Mockito.when(editService.updateCustomer(cust)).thenReturn(new Customer());
 		Mockito.when(editService.findCustomer(1L)).thenReturn(cust);
 		MvcResult mvcResult = this.mockMvc
 				.perform(MockMvcRequestBuilders.put(URI, 1L, 1, "sanket").accept(MediaType.APPLICATION_JSON))
@@ -81,7 +81,7 @@ class EditProfileControllerTest {
 		emp.setSecurityAnswer("r");
 		emp.setContactNo("9876543210");
 
-		Mockito.when(editService.updateEmployer(emp)).thenReturn(new Integer(1));
+		Mockito.when(editService.updateEmployer(emp)).thenReturn(new Employer());
 		Mockito.when(editService.findEmployer(1L)).thenReturn(emp);
 		MvcResult mvcResult = this.mockMvc
 				.perform(MockMvcRequestBuilders.put(URI, 1L, 2, "pass").accept(MediaType.APPLICATION_JSON)).andReturn();
@@ -106,7 +106,7 @@ class EditProfileControllerTest {
 		rep.setSecurityAnswer("r");
 		rep.setContactNo("9876543210");
 
-		Mockito.when(editService.updateRepresentative(rep)).thenReturn(new Integer(1));
+		Mockito.when(editService.updateRepresentative(rep)).thenReturn(new Representative());
 		Mockito.when(editService.findRepresentative(1L)).thenReturn(rep);
 		MvcResult mvcResult = this.mockMvc
 				.perform(MockMvcRequestBuilders.put(URI, 1L, 3, "pass").accept(MediaType.APPLICATION_JSON)).andReturn();
@@ -125,7 +125,7 @@ class EditProfileControllerTest {
 		a.setEmail("admin@gmail.com");
 		a.setPassword("password");
 
-		Mockito.when(editService.updateAdmin(a)).thenReturn(new Integer(1));
+		Mockito.when(editService.updateAdmin(a)).thenReturn(new Admin());
 		Mockito.when(editService.findAdmin("admin@gmail.com")).thenReturn(a);
 		MvcResult mvcResult = this.mockMvc.perform(
 				MockMvcRequestBuilders.put(URI, "admin@gmail.com", 1, "pass").accept(MediaType.APPLICATION_JSON))
@@ -175,7 +175,7 @@ class EditProfileControllerTest {
 		rep.setContactNo("9876543210");
 
 		Mockito.when(editService.findRepresentative(1L)).thenReturn(rep);
-		Mockito.when(editService.updateRepresentative(rep)).thenReturn(new Integer(1));
+		Mockito.when(editService.updateRepresentative(rep)).thenReturn(new Representative());
 		MvcResult mvcResult = this.mockMvc
 				.perform(MockMvcRequestBuilders.put(URI, 1L, 3, 3, "r", "pass").accept(MediaType.APPLICATION_JSON))
 				.andReturn();

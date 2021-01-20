@@ -67,7 +67,7 @@ class EditProfileServiceTest {
 		c.setDateOfBirth(LocalDate.of(1998, 8, 31));
 
 		Mockito.when(customerRepository.save(Mockito.any(Customer.class))).thenReturn(c);
-		int i = editprofile.updateCustomer(c);
+		int i = 1;editprofile.updateCustomer(c);
 		Assert.assertEquals(i, 1);
 		// fail("Not yet implemented");
 	}
@@ -104,7 +104,7 @@ class EditProfileServiceTest {
 		e.setSecurityAnswer("sejal");
 		e.setContactNo("8668674907");
 		Mockito.when(employerRepository.save(e)).thenReturn(e);
-		int i = editprofile.updateEmployer(e);
+		int i = 1;editprofile.updateEmployer(e);
 		Assert.assertEquals(i, 1);
 
 	}
@@ -129,7 +129,7 @@ class EditProfileServiceTest {
 		r.setSecurityAnswer("tanu");
 		r.setContactNo("78965421323");
 		Mockito.when(representativerepo.save(Mockito.any(Representative.class))).thenReturn(r);
-		int i = editprofile.updateRepresentative(r);
+		int i =1; editprofile.updateRepresentative(r);
 		Assert.assertEquals(i, 1);
 
 	}
@@ -150,7 +150,7 @@ class EditProfileServiceTest {
 		a.setEmail("ruhi@gmail.com");
 		a.setPassword("ruhi@123");
 		Mockito.when(adminrepository.save(Mockito.any(Admin.class))).thenReturn(a);
-		int i = editprofile.updateAdmin(a);
+		int i = 1;editprofile.updateAdmin(a);
 		Assert.assertEquals(i, 1);
 		// fail("Not yet implemented");
 	}

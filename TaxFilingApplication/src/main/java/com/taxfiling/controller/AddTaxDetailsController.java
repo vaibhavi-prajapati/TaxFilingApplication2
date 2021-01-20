@@ -7,6 +7,9 @@ import java.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +18,7 @@ import com.taxfiling.entity.Customer;
 import com.taxfiling.entity.TaxForm;
 import com.taxfiling.service.AddTaxDetailsService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class AddTaxDetailsController {
 
@@ -27,7 +31,7 @@ public class AddTaxDetailsController {
 	public String addTaxDetailsForEmployee(@RequestBody TaxForm objTaxForm) {
 		String str = "Taxform details not added";
 		LocalDate today = LocalDate.now(); // Today's date
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate date2 = LocalDate.parse(objTaxForm.getExtraInfo(), formatter);
 		Period p = Period.between(date2, today);
 		int age = p.getYears();
@@ -58,6 +62,11 @@ public class AddTaxDetailsController {
 		}
 		logger.info(str);
 		return str;
+	}
+
+	@GetMapping("/getCustomerById/{id}")
+	public Customer getCustomerByPan(@PathVariable("id") long customerId) {
+		return addTaxDetailsService.getCustomerById(customerId);
 	}
 
 	public TaxForm calculateTax(TaxForm objTaxForm, int age) {
