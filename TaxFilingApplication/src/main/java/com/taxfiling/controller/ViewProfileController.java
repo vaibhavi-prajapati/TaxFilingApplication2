@@ -45,7 +45,7 @@ public class ViewProfileController {
 		return viewProfileService.viewRepresentativeProfile(representativeId);
 	}
 
-	@GetMapping("/viewAdminProfile")
+	@GetMapping("/viewAdminProfile/{adminId}")
 	@ApiOperation("View Admin Profile")
 	public Admin viewAdminProfile() {
 		return viewProfileService.viewAdminProfile();

@@ -76,13 +76,13 @@ public class EditProfileController {
 
 	@PutMapping("/forgotPassword/{id}/{userChoice}/{questionChoice}/{answer}/{newPassword}")
 	@ApiOperation("User Choices: 1.Customer 2.Employer 3.Representative   " + "****QuestionChoice****= "
-			+ "1.what is your nickname?, 2.what is place of birth?, 3.What is your fathers name?")
+			+ "What is your nickname?, What is your pet name?, What is your bestfriend name?")
 	public String forgotPassword(@PathVariable("id") String id, @PathVariable("userChoice") int choice,
 			@PathVariable("questionChoice") int questionChoice, @PathVariable("answer") String answer,
 			@PathVariable("newPassword") String newPass) {
 
-		List<String> questions = Arrays.asList("1.what is your nickname?", "2.what is place of birth?",
-				"3.What is your fathers name?");
+		List<String> questions = Arrays.asList("What is your nickname?", "What is your pet name?",
+				"What is your bestfriend name?");
 
 		String res = "Sorry!! Question or answer is incorrect";
 		switch (choice) {
